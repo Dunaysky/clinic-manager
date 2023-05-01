@@ -54,6 +54,7 @@ gem 'net-imap'
 gem 'uri', '0.10.0'
 
 gem 'faker'
+gem 'devise'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -64,6 +65,7 @@ group :development, :test do
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'rubocop-performance'
+  gem 'pry-rails'
 end
 
 group :development do
