@@ -3,7 +3,6 @@
 class DoctorUser < ApplicationRecord
   belongs_to :user
   belongs_to :doctor
-  validates :status, presence: true
   validate :verify_max_number_of_appointments
 
   enum status: {
