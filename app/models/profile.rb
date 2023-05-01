@@ -10,7 +10,7 @@ class Profile < ApplicationRecord
   validates :phone_number, uniqueness: true, presence: true
   validates :first_name, presence: true
   validate :verify_phone_number
-   
+
   def email_changed?
     false
   end
