@@ -16,6 +16,7 @@ RSpec.describe Profile do
     subject { FactoryBot.build(:profile) }
 
     it { is_expected.to validate_uniqueness_of(:phone_number).ignoring_case_sensitivity }
+    it { expect(build(:profile, phone_number: '38050558215')).to be_valid }
     it { expect(build(:profile, phone_number: '+38050invalid')).not_to be_valid }
   end
 end

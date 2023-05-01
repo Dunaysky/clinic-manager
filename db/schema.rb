@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_30_161335) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_092209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,8 +48,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_161335) do
     t.bigint "related_to_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["phone_number"], name: "index_profiles_on_phone_number", unique: true
     t.index ["related_to_type", "related_to_id"], name: "index_profiles_on_related_to"
+    t.index ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true
   end
 
   create_table "users", force: :cascade do |t|

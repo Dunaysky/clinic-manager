@@ -2,6 +2,7 @@ require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
+  - rubocop-capybara
 AllCops:
   NewCops: enable
   Exclude:
@@ -33,6 +34,8 @@ Naming/VariableNumber:
 Rails/ApplicationController:
   Enabled: false
 Rails/EnvironmentVariableAccess:
+  Enabled: false
+Rails/LexicallyScopedActionFilter:
   Enabled: false
 Rails/UnknownEnv:
   Environments:
