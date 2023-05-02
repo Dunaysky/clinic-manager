@@ -1,2 +1,7 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%  if current_profile.related_to_type == 'Doctor' %>
+<%     controller.redirect_to doctors_path %>
+<%  else %>
+<%     controller.redirect_to users_path %>
+<%  end %>
+
+
