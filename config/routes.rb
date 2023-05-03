@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     registrations: 'profiles/registrations'
   }
   resources :doctors, only: %i[index show]
-  resources :users, only: %i[index show]
-  resources :doctor_users, only: %i[create update]
+  resources :doctor_users, only: %i[index create update]
+  resources :profiles, only: %i[show edit update]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

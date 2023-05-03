@@ -11,9 +11,11 @@
   </head>
 
   <body>
-    <%= button_to "Logout", destroy_profile_session_path, method: :delete %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
+    <%= render partial: 'partials/header' %>
+    
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,25 @@
+@import './colors.scss';
+
+.doctors-table {
+  width: 100%;
+  max-width: 120rem;
+  margin: auto;
+
+  td, th {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  &-button {
+    width: fit-content;
+    height: fit-content;
+    text-decoration: none;
+    border-radius: 2rem;
+    background-color: $blue-600;
+    border: 1px solid $blue-600;
+    color: $white;
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1.2rem 1.8rem;
+  }
+}

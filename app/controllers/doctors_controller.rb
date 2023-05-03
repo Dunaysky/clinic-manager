@@ -1,11 +1,18 @@
 class DoctorsController < ApplicationController
   def index
-    current_doctor
+    current_user
+    doctors
   end
 
   def show; end
 
-  def current_doctor
-    @current_doctor ||= current_profile.related_to
+  private
+
+  def doctors
+    @doctors ||= if params[:category] 
+      Doctor.where(category_id: params[:category])
+    else
+      Doctor.all
+    end
   end
 end
