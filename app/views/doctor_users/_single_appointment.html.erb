@@ -12,8 +12,8 @@
   <td>
     <% if current_profile.related_to_type == 'Doctor' && appointment.recommendation.blank? %>
       <%= form_with(url: doctor_user_path(appointment), method: :patch, local: true) do |form| %>
-        <%= form.text_area :recommendation, size: '50x5' %>
-        <%= form.submit %>
+        <%= form.text_area :recommendation, size: '30x5' %>
+        <%= form.submit "Recommend", class: 'doctors-table-button' %>
       <% end%>
     <% else %>
       <%= appointment.recommendation || 'No reccomendation yet' %>

@@ -1,6 +1,6 @@
-<%= form_with(url: "/doctors", method: :get, local: true) do |form| %>
-    <%= form.collection_select(:category, Category.all, :id, :name, include_blank: 'All') %>
-    <%= form.submit "Filter" %>
+<%= form_with(url: "/doctors", method: :get, local: true, class: 'header-wrapper') do |form| %>
+    <%= form.collection_select(:category, Category.all, :id, :name, {include_blank: 'All'}, {class: 'header-selection'}) %>
+    <%= form.submit "Filter", class: 'header-button' %>
 <% end%>
 <table class="doctors-table">
   <tr>

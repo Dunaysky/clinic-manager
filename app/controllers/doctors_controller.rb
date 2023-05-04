@@ -8,8 +8,8 @@ class DoctorsController < ApplicationController
 
   private
 
-  def doctors
-    @doctors ||= if params[:category] 
+  def doctors 
+    @doctors ||= if params[:category] && params[:category] != ''
       Doctor.where(category_id: params[:category])
     else
       Doctor.all
