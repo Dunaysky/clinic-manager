@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DoctorUsersController < ApplicationController
   before_action :load_appointment, only: %i[update]
 

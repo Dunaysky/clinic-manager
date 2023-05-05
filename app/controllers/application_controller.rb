@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def current_category
     @current_category ||= Category.first
-  end 
+  end
 
   protected
 

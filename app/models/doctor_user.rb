@@ -15,13 +15,13 @@ class DoctorUser < ApplicationRecord
   before_update :update_status_when_completed
 
   def verify_max_number_of_appointments
-    return if doctor.doctor_users.active.count < 10
+    return if doctor && doctor.doctor_users.active.count < 10
 
     errors.add(:base, 'Doctor has too many active appoinments')
   end
 
   def update_status_when_completed
-    return unless self.recommendation_changed? && self.recommendation.present?
+    return unless recommendation_changed? && recommendation.present?
 
     self.status = :completed
   end
