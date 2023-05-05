@@ -5,4 +5,8 @@ class Doctor < ApplicationRecord
   has_many   :doctor_users, dependent: :destroy
   has_many   :users, through: :doctor_users
   has_one    :profile, as: :related_to, dependent: :destroy
+
+  def display_name
+    "Id:#{id} | #{category.name}"
+  end
 end

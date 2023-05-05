@@ -11,7 +11,7 @@ class DoctorsController < ApplicationController
   private
 
   def doctors
-    @doctors ||= if params[:category] && params[:category] != ''
+    @doctors ||= if params[:category].present?
                    Doctor.where(category_id: params[:category])
                  else
                    Doctor.all

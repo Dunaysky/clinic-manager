@@ -1,10 +1,10 @@
 <div class="header-wrapper">
-  <% if current_profile %>
+  <div class="header-links-wrapper">
     <% if current_profile.related_to_type == 'User' %>
-      <%= link_to "Doctors", doctors_path, class: 'header-button' %>
+      <%= link_to "Doctors", doctors_path, class: 'header-link' %>
     <% end %>
-    <%= link_to "Appointments", doctor_users_path, class: 'header-button' %>
-    <%= link_to "Profile", profile_path(current_profile), class: 'header-button' %>
-    <%= button_to "Logout", destroy_profile_session_path, method: :delete, class: 'header-button' %>
-  <% end %>
+    <%= link_to "Appointments", doctor_users_path, class: 'header-link' %>
+    <%= link_to "Profile", profile_path(current_profile), class: 'header-link' %>
+  </div>
+  <%= button_to "Logout", destroy_profile_session_path, method: :delete, class: 'header-button' %>
 </div>

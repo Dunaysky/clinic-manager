@@ -20,7 +20,8 @@ RSpec.describe 'DoctorUser' do
     end
     let(:invalid_params) do
       {
-        user_id: user.id
+        user_id: user.id,
+        doctor_id: -1
       }
     end
 

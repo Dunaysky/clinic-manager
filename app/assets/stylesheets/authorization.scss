@@ -2,7 +2,6 @@
 
 .authorization {
   &-wrapper {
-    position: absolute;
     width: 100%;
     top: 0;
     bottom: 0;
@@ -16,15 +15,19 @@
     color: $blue-600;
     text-align: left;
     margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
   &-space-between {
+    align-self: flex-start;
+    padding-left: 2rem;
     margin-top: 2rem;
   }  
 
   &-form {
     &-wrapper {
-      width: 30%;
+      width: 100%;
+      max-width: 40rem;
       height: fit-content;
       display: flex;
       flex-direction: column;
@@ -34,6 +37,12 @@
       align-items: center;
       box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
       background-color: $white;
+      margin-bottom: 5rem;
+
+      form {
+        width: 80%;
+        margin: auto;
+      }
     }
 
     &-logo {
@@ -43,8 +52,8 @@
   }
 
   &-input {
-    width: 80%;
-    margin: 0 1,5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
     padding: 1rem 1.2rem;
     border: 1px solid $gray-300;
     background-color: $white;
@@ -62,20 +71,28 @@
     &-link {
       font-size: 1.4rem;
       color: $blue-600;
+      margin-top: 1rem;
       margin-bottom: 0.7rem;
     }
   }
 
-  &-submit-button {
-    align-self: center;
-    width: fit-content;
-    border: none;
-    text-decoration: none;
-    background-color: $blue-600;
-    color: $white;
-    font-size: 1.6rem;
-    border-radius: 1.2rem;
-    padding: 1.2rem 2rem;
-    margin-top: 0.7rem;
+  &-submit {
+    &-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &-button {
+      width: fit-content;
+      border: none;
+      text-decoration: none;
+      background-color: $blue-600;
+      color: $white;
+      font-size: 1.6rem;
+      border-radius: 1.2rem;
+      padding: 1.2rem 2rem;
+      margin-top: 0.7rem;
+    }
   }
 }
