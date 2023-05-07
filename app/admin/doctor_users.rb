@@ -4,6 +4,11 @@ ActiveAdmin.register DoctorUser, as: 'Appointments' do
   permit_params :doctor_id,
                 :recommendation,
                 :status
+  
+  scope :all, default: true
+  scope 'Avtive', :active_appointment
+  scope 'Completed', :completed_appointment
+                
   form do |f|
     f.semantic_errors(*f.object.errors)
 
