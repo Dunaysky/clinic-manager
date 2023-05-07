@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Profile do
   permit_params :first_name,
                 :last_name,
@@ -12,8 +14,8 @@ ActiveAdmin.register Profile do
   end
 
   scope :all, default: true
-  scope "Users", :related_to_user
-  scope "Doctors", :related_to_doctor
+  scope 'Users', :related_to_user
+  scope 'Doctors', :related_to_doctor
 
   filter :first_name
   filter :last_name
@@ -21,7 +23,7 @@ ActiveAdmin.register Profile do
   filter :related_to_type
   filter :created_at
   filter :updated_at
-  
+
   index do
     id_column
     column :first_name
@@ -36,15 +38,16 @@ ActiveAdmin.register Profile do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors
-    
+    f.semantic_errors(*f.object.errors)
+
     inputs 'Profile Details' do
       input :first_name
       input :last_name
       input :phone_number
       input :password
-      input :confirm_password     
-      input :related_to, label: "Doctor", as: :select, collection: Doctor.without_profile, hint: 'You can only select doctors without profile'
+      input :confirm_password
+      input :related_to, label: 'Doctor', as: :select, collection: Doctor.without_profile,
+                         hint: 'You can only select doctors without profile'
     end
 
     actions

@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     if user.is_a?(AdminUser)
-      can :read, ActiveAdmin::Page, name: "Dashboard"
+      can :read, ActiveAdmin::Page, name: 'Dashboard'
       can :read, User
       can :manage, AdminUser
       can :manage, Profile
@@ -15,11 +15,11 @@ class Ability
       cannot :destroy, DoctorUser
     elsif user.doctor?
       can :manage, Profile
-      can [:read, :update], DoctorUser
+      can %i[read update], DoctorUser
     elsif user.user?
       can :read, Doctor
       can :manage, Profile
-      can [:read, :create], DoctorUser
+      can %i[read create], DoctorUser
     end
   end
 end

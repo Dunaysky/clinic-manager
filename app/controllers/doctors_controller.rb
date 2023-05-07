@@ -13,9 +13,9 @@ class DoctorsController < ApplicationController
 
   def doctors
     @doctors = if params[:category].present?
-                   Doctor.where(category_id: params[:category]).with_profile
-                 else
-                   Doctor.with_profile
-                 end
+                 Doctor.where(category_id: params[:category]).with_profile
+               else
+                 Doctor.with_profile
+               end
   end
 end

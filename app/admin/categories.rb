@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Category do
   permit_params :name
-  
+
   filter :name
 
   index do
@@ -13,12 +15,12 @@ ActiveAdmin.register Category do
   end
 
   form do |f|
-    f.semantic_errors *f.object.errors
+    f.semantic_errors(*f.object.errors)
 
     inputs 'Category Details' do
       input :name
-      end
-    
+    end
+
     actions
   end
 
