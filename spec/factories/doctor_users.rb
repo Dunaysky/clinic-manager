@@ -5,6 +5,5 @@ FactoryBot.define do
     doctor
     user
     status { 0 }
-    date { Faker::Time.forward(days: 5) }
   end
 end

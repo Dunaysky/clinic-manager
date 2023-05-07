@@ -12,9 +12,17 @@ class DoctorUser < ApplicationRecord
   scope :active_appointment, -> { where(status: :active) }
   scope :completed_appointment, -> { where(status: :completed) }
 
-  def verify_max_number_of_appointments
-    return if doctor.doctor_users.active.count < 10
+  before_update :update_status_when_completed
 
-    errors.add(:base, 'Doctor has too many active appoinments')
+  def verify_max_number_of_appointments
+    return if doctor && doctor.doctor_users.active.count < 10
+
+    @errors.add(:base, 'Doctor has too many active appoinments')
+  end
+
+  def update_status_when_completed
+    return unless recommendation_changed? && recommendation.present?
+
+    self.status = :completed
   end
 end

@@ -1,12 +1,17 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] = 'test'
+# ENV['CHROME'] = 'true'
 
 require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'devise'
+require 'database_cleaner'
+require 'capybara/rspec'
+require 'selenium/webdriver'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -41,6 +46,24 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+selenium_flags = %w[
+  --headless
+  --disable-gpu
+]
+
+options = Selenium::WebDriver::Chrome::Options.new
+selenium_flags.each { |flag| options.add_argument(flag) } unless ENV['CHROME']
+
+Capybara.register_driver(:headless_chrome) do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+end
+
+# Capybara.javascript_driver = :headless_chrome
+
+# Uncomment to see feature tests in Chrome
+Capybara.default_driver = :headless_chrome if ENV['CHROME']
+
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -64,6 +87,8 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.include FactoryBot::Syntax::Methods
 

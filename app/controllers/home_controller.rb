@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  before_action :authenticate_profile!
-
-  def index; end
+  def index
+    if current_profile.related_to_type == 'User'
+      redirect_to doctors_path
+    else
+      redirect_to doctor_users_path
+    end
+  end
 end
