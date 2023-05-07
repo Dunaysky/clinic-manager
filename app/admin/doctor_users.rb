@@ -1,18 +1,16 @@
-ActiveAdmin.register DoctorUser do
+ActiveAdmin.register DoctorUser, as: 'Appointments' do
+  permit_params :doctor_id,
+                :recommendation,
+                :status
+  form do |f|
+    f.semantic_errors *f.object.errors
+    
+    inputs 'Appointment Details' do
+      input :doctor
+      input :recommendation
+      input :status
+    end
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :recommendation, :status, :doctor_id, :user_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:recommendation, :status, :doctor_id, :user_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+    actions
+  end
 end

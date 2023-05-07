@@ -11,6 +11,10 @@ ActiveAdmin.register Profile do
     resource.related_to_type = 'Doctor'
   end
 
+  scope :all, default: true
+  scope "Users", :related_to_user
+  scope "Doctors", :related_to_doctor
+
   filter :first_name
   filter :last_name
   filter :phone_number
@@ -40,7 +44,7 @@ ActiveAdmin.register Profile do
       input :phone_number
       input :password
       input :confirm_password     
-      input :related_to, label: "Doctor", as: :select, collection: Doctor.all
+      input :related_to, label: "Doctor", as: :select, collection: Doctor.without_profile, hint: 'You can only select doctors without profile'
     end
 
     actions

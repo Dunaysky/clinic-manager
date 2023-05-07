@@ -11,7 +11,7 @@
         class: "doctors-table-button",
         method: :post,
         params: {
-          user_id: @current_user.id,
+          user_id: current_profile.related_to_id,
           doctor_id: doctor.id
         })%>
   </td>

@@ -19,7 +19,7 @@ describe 'Login as Doctor and leave recommentation to User flow: ' do
 
     find('#recommendation').fill_in with: 'Doctor test recommendation'
 
-    click_button 'Recommend'
+    click_button 'Send'
 
     expect(page).to(have_content('Recommendation sent successfully.'))
   end

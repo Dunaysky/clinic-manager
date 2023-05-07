@@ -11,6 +11,13 @@ ActiveAdmin.setup do |config|
   #
   # config.site_title_link = "/"
 
+  config.skip_before_action :authenticate_profile!
+
+  config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.on_unauthorized_access = :access_denied
+  config.cancan_ability_class = "Ability"
+
+
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
   #

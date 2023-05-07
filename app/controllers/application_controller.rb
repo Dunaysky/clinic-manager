@@ -4,16 +4,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_profile!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
   def current_user
-    @current_user ||= current_profile.related_to
-  end
-
-  def current_doctor
-    @current_doctor ||= current_profile.related_to
-  end
-
-  def current_category
-    @current_category ||= Category.first
+    current_profile
   end
 
   protected

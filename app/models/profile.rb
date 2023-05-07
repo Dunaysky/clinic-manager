@@ -11,8 +11,19 @@ class Profile < ApplicationRecord
   validates :first_name, presence: true
   validate :verify_phone_number
 
+  scope :related_to_user, -> { where(related_to_type: 'User') }
+  scope :related_to_doctor, -> { where(related_to_type: 'Doctor') }
+
   def email_changed?
     false
+  end
+
+  def doctor?
+    related_to_type == 'Doctor'
+  end
+
+  def user?
+    related_to_type == 'User'
   end
 
   alias will_save_change_to_email? email_changed?
