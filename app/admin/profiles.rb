@@ -25,18 +25,21 @@ ActiveAdmin.register Profile do
     column :phone_number
     column :related_to_type
     column :related_to
+    column :created_at
+    column :updated_at
 
     actions dropdown: true
   end
 
   form do |f|
     f.semantic_errors *f.object.errors
-
+    
     inputs 'Profile Details' do
       input :first_name
       input :last_name
       input :phone_number
       input :password
+      input :confirm_password     
       input :related_to, label: "Doctor", as: :select, collection: Doctor.all
     end
 

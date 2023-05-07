@@ -15,7 +15,7 @@ class DoctorUsersController < ApplicationController
                   flash: { notice: 'Appointment was successfully created.' }
     else
       redirect_to root_path,
-                  flash: { error: appointment.errors.full_messages.to_sentence }
+                  flash: { alert: appointment.errors.full_messages.to_sentence }
     end
   end
 
@@ -25,7 +25,7 @@ class DoctorUsersController < ApplicationController
                   flash: { notice: 'Recommendation sent successfully.' }
     else
       redirect_to root_path,
-                  flash: { error: @appointment.errors.full_messages.to_sentence }
+                  flash: { alert: @appointment.errors.full_messages.to_sentence }
     end
   end
 
