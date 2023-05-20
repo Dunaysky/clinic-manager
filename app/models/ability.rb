@@ -13,6 +13,7 @@ class Ability
       can :manage, Category
       can :manage, DoctorUser
       cannot :destroy, DoctorUser
+      cannot :destroy, Doctor
     elsif user.doctor?
       can :manage, Profile
       can %i[read update], DoctorUser
